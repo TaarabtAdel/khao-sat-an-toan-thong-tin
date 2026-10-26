@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phiếu khảo sát hệ thống thông tin – cấp độ 2</title>
+<style>
+:root{--ink:#17252a;--mut:#64757c;--bg:#f1f5f8;--card:#fff;--fld:#f1f5f8;--line:#d9e2e7;--teal:#0b5f66;--g1:#8e44ad;--g2:#0b7a75;--g3:#2563eb;--g4:#d97706;--g5:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.45 "Be Vietnam Pro","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#0b5f66,#0f4c5c);color:#fff;padding:28px 0 90px}
+.w{max-width:1000px;margin:0 auto;padding:0 16px}
+h1{margin:0 0 6px;font-size:26px;line-height:1.25}
+header p{margin:0;font-size:12px;opacity:.85}
+.top{margin-top:-70px;background:var(--card);border-radius:14px;box-shadow:0 4px 18px #0002;padding:18px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.ring{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--teal) 0%,#dde5ea 0);flex:none}
+.ring div{width:92px;height:92px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;font-size:10px;color:var(--mut)}
+.ring b{display:block;font-size:24px;color:var(--ink)}
+.tiles{display:flex;gap:10px;flex-wrap:wrap;flex:1}
+.tile{border:1px solid var(--line);border-top:3px solid var(--c);border-radius:8px;padding:8px 12px;min-width:140px;background:var(--fld);cursor:pointer;font-size:12px;flex:1}
+.tile b{display:block;font-size:20px;color:var(--c)}
+.tile .bar{height:4px;background:#dde5ea;border-radius:3px;margin-top:4px}.tile .bar i{display:block;height:100%;background:var(--c);border-radius:3px}
+.tile.on{outline:2px solid var(--ink)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:12.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{border:1px solid var(--line);border-radius:14px;padding:2px 10px;font-size:11.5px;background:var(--fld);cursor:pointer;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.miss{color:var(--g5);font-weight:600}
+section.s{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:16px;margin:14px 0}
+section.s h2{margin:0;font-size:15px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h2 small{color:var(--mut);font-weight:400;font-size:12px}
+.tag{margin-left:auto;border:1px solid var(--c);color:var(--c);border-radius:12px;padding:1px 10px;font-size:11px;font-weight:500}
+.hint{background:var(--fld);color:var(--mut);border-radius:6px;padding:7px 10px;margin:10px 0;font-size:12px}
+.f{margin:14px 0}.f>label{display:block;font-weight:600;font-size:12.5px;margin-bottom:5px}
+.req{color:var(--g5)}
+input[type=text],input[type=date],textarea,select{width:100%;background:var(--fld);border:1px solid var(--line);border-radius:7px;padding:9px 11px;font:inherit;color:inherit}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--teal);outline-offset:1px;background:#fff}
+textarea{min-height:64px;resize:vertical}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opts label{border:1px solid var(--line);background:var(--fld);border-radius:16px;padding:5px 12px;cursor:pointer;font-size:12.5px;display:flex;gap:6px;align-items:center}
+.opts label:has(input:checked){border-color:var(--teal);background:#e0f1f1;color:var(--teal);font-weight:600}
+.det{margin-top:8px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:max-content}
+th{background:var(--fld);font-size:11.5px;text-align:left;padding:8px;white-space:nowrap}
+td{padding:3px 4px;border-top:1px solid var(--line)}
+td input,td select{min-width:110px;padding:6px 8px}
+td.n,th.n{width:34px;text-align:center;color:var(--mut)}td.st{padding:6px 8px;min-width:200px;font-weight:500}
+.add{margin-top:8px;border:1px dashed var(--teal);color:var(--teal);background:#fff;border-radius:6px;padding:4px 12px;cursor:pointer;font:inherit;font-size:12px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 60px}
+.acts button{border:1px solid var(--teal);background:#fff;color:var(--teal);border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+.acts .p{background:var(--teal);color:#fff}
+.sec-hide{display:none}
+@media print{header,.top,.box,.acts,.add{display:none}body{background:#fff}section.s{break-inside:avoid}.sec-hide{display:block!important}}
+</style>
+</head>
+<body>
+<header><div class="w"><h1>Phiếu khảo sát hệ thống thông tin – hồ sơ đề xuất cấp độ an toàn thông tin (cấp độ 2)</h1>
+<p><span id="orgName">Chưa nhập tên đơn vị</span> · Theo Thông tư 12/2022/TT-BTTTT và Nghị định 13/2023/NĐ-CP · Dữ liệu tự lưu trên trình duyệt này</p></div></header>
+<div class="w">
+<div class="top"><div class="ring" id="ring"><div><span><b id="pct">0%</b><span id="cnt">0/0 mục bắt buộc</span></span></div></div><div class="tiles" id="tiles"></div></div>
+<div class="box" id="missBox"></div>
+<div id="app"></div>
+<div class="acts">
+<button class="p" id="bSave">Tải file dữ liệu (.json)</button>
+<button id="bOpen">Mở file dữ liệu</button><input type="file" id="fOpen" accept=".json" hidden>
+<button id="bCopy">Sao chép dữ liệu</button>
+<button id="bPrint">In / Lưu PDF</button>
+<button id="bClear">Xóa toàn bộ</button>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+/* ===== Cấu hình nhóm & câu hỏi ===== */
+var G={g1:['Lãnh đạo UBND xã','--g1'],g2:['Văn phòng – Thống kê','--g2'],g3:['Cán bộ CNTT – Hạ tầng mạng','--g3'],g4:['An ninh – Camera – Cơ sở vật chất','--g4'],g5:['Bảo mật & Vận hành ATTT','--g5']};
+var T=function(id,l,q,p){return{id:id,l:l,t:'t',q:q,p:p||''}};
+var A=function(id,l,q){return{id:id,l:l,t:'a',q:q}};
+var R=function(id,l,q,o,d){return{id:id,l:l,t:'r',q:q,o:o.split('|'),d:d}};
+var C=function(id,l,q,o){return{id:id,l:l,t:'c',q:q,o:o.split('|')}};
+/* cột bảng: "Tên*" = bắt buộc ; "Tên|a,b,c" = ô chọn */
+var B=function(id,l,q,cols,n,fx){return{id:id,l:l,t:'tb',q:q,cols:cols.split(';'),n:n,fx:fx}};
+var yn='Có|Không';
+var S=[
+['A','Thông tin cơ quan / chủ quản hệ thống','g1','Điền đúng tên đầy đủ theo quyết định thành lập, không viết tắt.',[
+ T('A1','A1. Tên đơn vị chủ quản hệ thống thông tin',1,'UBND xã ..., tỉnh ...'),T('A2','A2. Tên hệ thống thông tin cần phân loại',1,'Hệ thống thông tin phục vụ hoạt động của UBND xã ...'),
+ T('A3','A3. Địa chỉ trụ sở chính',1),T('A4','A4. Số điện thoại cơ quan'),T('A5','A5. Email cơ quan'),
+ T('A6','A6. Họ tên, chức vụ người đứng đầu đơn vị',1,'Ông/Bà ... – Chủ tịch UBND xã ...'),T('A7','A7. Số quyết định giao nhiệm vụ quản lý hệ thống',0,'Số QĐ, ngày ký, cơ quan ký')]],
+['B','Cán bộ phụ trách CNTT / An toàn thông tin','g2','Liệt kê tất cả cán bộ liên quan đến vận hành CNTT, ghi rõ trình độ, chuyên ngành và chứng chỉ ATTT.',[
+ B('B1','B1. Danh sách cán bộ',1,'Họ và tên*;Chức vụ*;Số điện thoại*;Email;Trình độ / Chuyên ngành*;Chứng chỉ ATTT',4),T('B2','B2. Đơn vị hỗ trợ kỹ thuật bên ngoài',0,'Tên đơn vị, số điện thoại hỗ trợ')]],
+['C','Mô tả hệ thống thông tin','g2','Trả lời đủ 3 ý: phục vụ nghiệp vụ gì, ai sử dụng, dữ liệu quan trọng nhất là gì.',[
+ A('C1','C1. Chức năng chính của hệ thống',1),T('C2','C2. Đối tượng người dùng',1,'Cán bộ công chức, người dân, cơ quan cấp trên...'),T('C3','C3. Loại dữ liệu xử lý / lưu trữ',1,'Dữ liệu cá nhân, hộ tịch, đất đai, kế toán, văn bản...'),
+ C('C4','C4. Phân loại dữ liệu theo NĐ 13/2023',1,'Dữ liệu cá nhân thông thường|Dữ liệu cá nhân nhạy cảm|Dữ liệu công|Chưa xác định / Cần tư vấn'),
+ T('C5','C5. Số lượng người dùng ước tính',1,'Nội bộ: ... ; Bên ngoài: ...'),T('C6','C6. Hệ thống hoạt động từ năm'),
+ R('C7','C7. Có kết nối với hệ thống cấp trên không?',1,'Có – ghi tên hệ thống|Không',1),R('C8','C8. Có xử lý thông tin bí mật nhà nước không?',1,'Không|Có – ghi độ mật',1)]],
+['D','Kết nối Internet','g3','Điền từng đường truyền riêng biệt. Nếu chỉ có 1 đường, ghi vai trò "Chính (duy nhất)".',[
+ B('D1','D1. Các đường truyền Internet',1,'Nhà cung cấp (ISP)*;Loại kết nối*;Băng thông*;Vai trò (Chính / Dự phòng)*;IP WAN (Tĩnh / Động)*;Ghi chú',3),
+ T('D2','D2. Router / Modem tại điểm kết nối Internet',1,'Hãng, model, số serial'),T('D3','D3. Địa chỉ IP LAN của Router / Gateway chính',1)]],
+['E','Danh mục thiết bị mạng','g3','Mỗi thiết bị một hàng. Số serial và vị trí (tầng + phòng) là bắt buộc, thiếu sẽ trả hồ sơ.',[
+ B('E1','E1. Router, Switch, Firewall, Access Point...',1,'Loại thiết bị*;Hãng*;Model*;Số serial (S/N)*;Vị trí (Tầng – Phòng)*;Năm lắp;Ghi chú',7),
+ R('E2','E2. Firewall phần cứng chuyên dụng',1,'Có (đã liệt kê ở bảng trên)|Không – dùng firewall tích hợp Router/Switch|Không – dùng firewall phần mềm trên máy chủ')]],
+['F','Thiết bị đầu cuối và máy chủ','g3','Khai từng máy. Năm sản xuất, thế hệ chip và chuẩn RAM giúp tự tính tuổi thiết bị so với năm 2026 (từ 5 năm: Kém, từ 8 năm: Cần thay thế; RAM từ 4 GB trở xuống bị hạ một mức). Máy chủ phải liệt kê từng chiếc.',[
+ B('F1','F1. Máy tính để bàn (mỗi máy một hàng, bấm "+ Thêm hàng" nếu thiếu)',1,'Vị trí / Người dùng*;Hãng / Model*;CPU (ghi tên chip, VD: Core i5-8500)*;Thế hệ chip (để tính tuổi chip)*|Trước 2015,2015–2017,2018–2020,2021–2023,2024 trở lên;RAM (GB)*;Ổ cứng;Năm sản xuất / mua*;Hệ điều hành;Tình trạng',12),
+ B('F1b','F1b. Máy tính xách tay (Laptop)',0,'Người dùng / Phòng ban*;Hãng / Model*;CPU (ghi tên chip)*;Thế hệ chip*|Trước 2015,2015–2017,2018–2020,2021–2023,2024 trở lên;RAM (GB)*;Năm sản xuất / mua',5),
+ B('F1c','F1c. Máy in, máy scan, máy photocopy',1,'Loại thiết bị*|Máy in,Máy scan,Máy photocopy,Đa năng;Hãng / Model*;Kết nối|USB,LAN,WiFi;Năm sản xuất / mua*;Vị trí đặt*;Tình trạng (hay hỏng?)',8),
+ B('F1d','F1d. Thiết bị khác (máy tính bảng, điện thoại công vụ, màn hình lớn...)',0,'Loại thiết bị;Số lượng;Ghi chú',3),
+ B('F2','F2. Máy chủ (nếu không có ghi "Không có" và nơi lưu dữ liệu)',1,'Vai trò*;Hãng / Model*;Số serial*;RAM (GB);Ổ cứng (TB);Hệ điều hành*;Vị trí*',3),
+ R('F3','F3. Có dùng điện toán đám mây không?',1,'Không|Có – ghi tên dịch vụ',1)]],
+['G','Hệ thống camera giám sát','g4','Liệt kê từng camera hoặc theo nhóm cùng model. Vị trí ghi rõ tầng + khu vực.',[
+ B('G1','G1. Danh sách camera',1,'Hãng*;Model*;Số serial*;Độ phân giải;Vị trí lắp đặt*;Ghi chú (góc quay, ngoài trời...)',5),
+ T('G2','G2. Đầu ghi NVR / DVR',1,'Hãng, model, số serial, vị trí đặt'),T('G3','G3. Dữ liệu camera lưu bao nhiêu ngày?',1)]],
+['H','Quy hoạch địa chỉ IP nội bộ (LAN)','g3','Nếu chưa rõ, nhờ cán bộ CNTT kiểm tra cài đặt Router.',[
+ T('H1','H1. Dải IP LAN đang dùng',1,'192.168.1.0/24'),T('H2','H2. IP Gateway / Router',1),T('H3','H3. Máy chủ DNS'),
+ R('H4','H4. Có chia VLAN không?',1,'Không (mạng phẳng)|Có – ghi số lượng và mô tả',1),
+ B('H5','H5. Thiết bị gán IP tĩnh',0,'Tên thiết bị / vai trò;Địa chỉ IP tĩnh;Ghi chú',4)]],
+['I','Ứng dụng và dịch vụ CNTT','g3','Liệt kê tất cả phần mềm, kể cả do cấp trên cung cấp. Ghi rõ có kết nối Internet hay không.',[
+ B('I1','I1. Danh sách ứng dụng',1,'Tên ứng dụng*;Chức năng chính*;Đơn vị cung cấp;Phiên bản;Kết nối Internet?*|Có,Không;Ghi chú',6)]],
+['K','Văn bản pháp lý, kế hoạch ATTT','g2','Chưa có văn bản nào thì ghi "Chưa ban hành".',[
+ B('K1','K1. Văn bản của đơn vị',1,'Loại văn bản;Số văn bản / Ngày ban hành*;Ghi chú',7,['Quyết định ban hành quy chế ATTT','Kế hoạch ATTT năm hiện tại','Kế hoạch ATTT năm trước','Quyết định phân công cán bộ phụ trách ATTT','Quyết định / phê duyệt hệ thống thông tin','Văn bản ứng phó sự cố ATTT','Biên bản kiểm tra, đánh giá ATTT gần nhất'])]],
+['L1, L8','An toàn vật lý phòng đặt thiết bị','g4','Trả lời đúng thực tế để hồ sơ phản ánh chính xác.',[
+ R('L1','Khu vực đặt máy chủ / thiết bị mạng có kiểm soát ra vào không?',0,'Khóa cửa thường|Khóa cửa + camera|Thẻ từ / điện tử|Không kiểm soát riêng'),R('L2s','Có sổ ký tên ra vào phòng máy không?',0,yn),
+ R('L81','L8.1. Có UPS (bộ lưu điện) không?',1,'Có – ghi hãng, công suất, thời gian dự phòng|Không có UPS',1),
+ R('L82','L8.2. Phòng có điều hòa riêng không?',1,'Có, chạy 24/7|Có, chỉ giờ hành chính|Không'),R('L83','L8.3. Có bình chữa cháy không?',1,'Có – CO₂|Có – bột khô|Không'),
+ T('L84','L8.4. Mô tả phòng đặt máy chủ / tủ mạng',0,'Diện tích, số người giữ chìa khóa')]],
+['L2–L7','Hiện trạng bảo mật và kiểm soát truy cập','g5','Không cần trả lời "đáp ứng" nếu thực tế chưa có. Thông tin trung thực giúp đề xuất đúng biện pháp.',[
+ R('M1','Chính sách mật khẩu',1,'Có – ghi độ dài tối thiểu, chu kỳ đổi|Không có chính sách thống nhất',1),R('M2','Cách dùng tài khoản quản trị (admin)',1,'Mỗi cán bộ một tài khoản|Dùng chung một tài khoản|Cả hai hình thức'),
+ R('M3','Có dùng xác thực hai yếu tố (2FA) không?',1,'Có – ghi áp dụng cho|Không',1),R('M4','Có cài phần mềm diệt virus không?',1,'Có – ghi tên, bản quyền|Không',1),
+ R('M5','Antivirus cập nhật định nghĩa virus',0,'Tự động|Thủ công|Không cập nhật'),R('M6','Quy trình sao lưu dữ liệu',1,'Hàng ngày|Hàng tuần|Hàng tháng|Thủ công khi nhớ|Không sao lưu'),
+ T('M7','Dữ liệu sao lưu lưu ở đâu?',1,'Ổ cứng ngoài / NAS / USB / Cloud'),R('M8','Có lưu bản sao lưu ở vị trí khác (off-site) không?',1,'Có – ghi địa điểm|Không, cùng vị trí máy chủ',1),
+ R('M9','Router / Switch có bật ghi log không?',1,'Có|Không|Chưa kiểm tra'),R('M10','Log lưu bao lâu?',0,'Dưới 3 tháng|3–6 tháng|Trên 6 tháng|Không lưu'),
+ R('M11','Có hệ thống giám sát tập trung (SIEM, syslog) không?',1,'Có – ghi tên / loại|Không',1),R('M12','Trong 2 năm qua có sự cố ATTT không?',1,'Không có|Có – mô tả ngắn|Không ghi nhận',1),
+ A('M13','Nếu có sự cố, đã xử lý như thế nào?'),C('L71','L7.1. Loại tường lửa đang dùng',1,'Tích hợp trên Router (SPI)|Firewall phần cứng chuyên dụng|Tường lửa phần mềm trên máy chủ'),
+ R('L72','L7.2. Chính sách mặc định của tường lửa',1,'Chặn tất cả, chỉ cho phép khai báo (Default Deny)|Cho phép tất cả, chỉ chặn cấm (Default Allow)|Không biết / Chưa cấu hình'),
+ R('L73','L7.3. Có cho truy cập từ xa vào hệ thống không?',1,'Có – qua VPN|Có – qua Remote Desktop / TeamViewer / AnyDesk|Không'),T('L74','L7.4. Các cổng / dịch vụ đang mở ra Internet',0,'VD: 443 (DVCTT), 37777 (camera NVR)')]],
+['P','Mã hóa và bảo vệ dữ liệu','g5','Mã hóa là một trong 13 biện pháp bắt buộc của Phụ lục II TT 12/2022 (cấp độ 2).',[
+ R('P1','P1. Ứng dụng web dùng giao thức nào?',1,'HTTPS|HTTP|Cả hai'),R('P2','P2. Kết nối từ xa có dùng VPN không?',1,'Có – SSL VPN|Có – IPSec|Có – loại khác|Không có VPN'),
+ R('P3','P3. Kết nối lên cơ quan cấp trên qua đường nào?',1,'VPN chuyên dụng|Internet thường (HTTPS)|Đường truyền số liệu chuyên dụng|Không kết nối trực tiếp'),T('P31','P3.1. Hệ thống cấp trên kết nối đến và phương thức'),
+ R('P4','P4. Dữ liệu lưu trên máy chủ / NAS có mã hóa không?',1,'Có – ghi phần mềm / phương pháp|Không mã hóa',1),R('P5','P5. Email công vụ có dùng giao thức bảo mật không?',0,'Có – TLS/SMTPS|Không biết|Không')]],
+['Q','Quản lý lỗ hổng và vá lỗi','g5','Cấp độ 2 yêu cầu có quy trình theo dõi và vá lỗi định kỳ.',[
+ R('Q1','Q1. Quy trình cập nhật / vá lỗi hệ điều hành',1,'Hàng tháng|Hàng quý|Khi có cảnh báo|Không có quy trình|Không cập nhật'),R('Q2','Q2. Phần mềm ứng dụng có được cập nhật không?',1,'Tự động|Thủ công|Không cập nhật'),
+ T('Q3','Q3. Ai chịu trách nhiệm cập nhật / vá lỗi?',1,'Tên cán bộ hoặc đơn vị hỗ trợ'),R('Q4','Q4. Firmware thiết bị mạng có được cập nhật không?',1,'Thường xuyên|Thỉnh thoảng|Chưa bao giờ|Không biết'),
+ R('Q5','Q5. Có theo dõi cảnh báo từ VNCERT/CC hoặc Sở KH&CN không?',0,'Có, nhận và xử lý|Không thường xuyên|Chưa biết kênh nhận')]],
+['R','Đào tạo và nâng cao nhận thức ATTT','g2','Chưa đào tạo thì ghi "Chưa tổ chức", cán bộ lập hồ sơ sẽ đề xuất kế hoạch.',[
+ B('R1','R1. Các khóa đào tạo, tập huấn',1,'Hình thức;Đơn vị tổ chức;Thời gian (tháng/năm);Số cán bộ tham gia;Chứng chỉ / Số giấy xác nhận',3),R('R2','R2. Có tuyên truyền ATTT nội bộ không?',0,'Có – ghi hình thức|Không',1)]],
+['S','Kiểm tra, đánh giá ATTT định kỳ','g2','Cấp độ 2 yêu cầu kiểm tra ít nhất 1 lần/năm (Điều 12 TT 12/2022).',[
+ B('S1','S1. Lịch sử kiểm tra',1,'Loại kiểm tra;Đơn vị thực hiện;Thời gian;Kết quả / Số văn bản',3),T('S2','S2. Kế hoạch kiểm tra tiếp theo (dự kiến)')]],
+['T','Sơ đồ kết nối mạng (logic và vật lý)','g3','Không cần kiến thức sâu. Nếu không chắc, chụp ảnh tủ mạng gửi kèm.',[
+ R('T11','T1.1. Có chia vùng DMZ không?',1,'Có – ghi máy chủ trong DMZ|Không, tất cả cùng một vùng LAN',1),R('T12','T1.2. WiFi có tách riêng khỏi LAN có dây không?',1,'Có|Không|Không có WiFi'),
+ T('T13','T1.3. SSID, chuẩn bảo mật, có mạng khách không?'),R('T14','T1.4. Camera có nằm trên mạng riêng không?',1,'Có|Không|Không biết'),
+ B('T2','T2. Kết nối cổng Switch',1,'Tên Switch*;Số cổng*;Cổng đang dùng (Port → Thiết bị)*;Ghi chú (uplink, PoE...)',4),
+ R('T31','T3.1. Có dùng tủ mạng / rack không?',1,'Có – ghi kích thước, vị trí|Không',1),A('T32','T3.2. Thiết bị trong tủ mạng (từ trên xuống)'),
+ R('T41','T4.1. Loại cáp chính trong tòa nhà',1,'Cáp đồng|Cáp quang nội bộ|Cả hai'),T('T42','T4.2. Đường cáp từ nhà mạng vào thiết bị đầu tiên',1),
+ B('T5','T5. Vị trí thiết bị quan trọng',1,'Thiết bị;Tầng*;Phòng cụ thể*;Ghi chú',7,['Router / Modem ISP','Switch core','File Server','NVR Camera','Access Point 1','Access Point 2','Máy tính cán bộ'])]],
+['M','Tài liệu và ảnh đính kèm','g2','Tích vào tài liệu đã có. Thiếu ảnh thiết bị là lý do phổ biến nhất phải khảo sát bổ sung.',[
+ C('TL1','Tài liệu bắt buộc đã có',1,'Ảnh nhãn Router / Modem|Ảnh nhãn Switch|Ảnh nhãn từng Camera|Ảnh nhãn NVR / DVR|Quyết định ban hành quy chế ATTT|Kế hoạch ATTT năm nay và năm trước|Quyết định phân công cán bộ CNTT / ATTT'),
+ C('TL2','Tài liệu bổ sung (nếu có)',0,'Ảnh nhãn máy chủ|Ảnh toàn cảnh tủ mạng|Ảnh cấu hình DHCP / IP tĩnh|Sơ đồ mặt bằng|Biên bản kiểm tra ATTT gần nhất|Chứng chỉ đào tạo ATTT|Hợp đồng Internet / VPN')]],
+['N','Xác nhận của đơn vị','g1','Thông tin được cung cấp là trung thực; đơn vị cam kết phối hợp bổ sung khi được yêu cầu.',[
+ T('N1','Người điền phiếu (họ tên, chức vụ, SĐT)',1),{id:'N2',l:'Ngày điền',t:'d',q:1},T('N3','Thủ trưởng đơn vị (họ tên, chức vụ)',1),R('N4','Cam kết thông tin trung thực',1,'Tôi xác nhận và chịu trách nhiệm')]]
+];
+var KEY='khaosat_attt_v1',D={};
+/* ===== Dựng giao diện ===== */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function row(f,i,v){var h='<tr><td class="n">'+(i+1)+'</td>';
+ f.cols.forEach(function(c,j){var p=c.split('|'),nm=p[0].replace('*',''),val=v?v[j]:'';
+  if(j==0&&f.fx){h+='<td class="st">'+esc(f.fx[i]||'')+'</td>';return}
+  if(p[1]){h+='<td><select><option value=""></option>'+p[1].split(',').map(function(o){return'<option'+(o==val?' selected':'')+'>'+o+'</option>'}).join('')+'</select></td>'}
+  else h+='<td><input type="text" value="'+esc(val||'')+'" aria-label="'+esc(nm)+'"></td>'});
+ return h+'</tr>'}
+function field(f){var h='<div class="f" id="f_'+f.id+'"><label>'+esc(f.l)+(f.q?' <span class="req">*</span>':'')+'</label>';
+ if(f.t=='t')h+='<input type="text" data-k="'+f.id+'" placeholder="'+esc(f.p)+'">';
+ else if(f.t=='d')h+='<input type="text" data-k="'+f.id+'" placeholder="dd/mm/yyyy">';
+ else if(f.t=='a')h+='<textarea data-k="'+f.id+'"></textarea>';
+ else if(f.t=='r'||f.t=='c'){var ty=f.t=='r'?'radio':'checkbox';h+='<div class="opts">'+f.o.map(function(o){return'<label><input type="'+ty+'" name="'+f.id+'" value="'+esc(o)+'">'+esc(o)+'</label>'}).join('')+'</div>';
+  if(f.d)h+='<input type="text" class="det" data-k="'+f.id+'_d" placeholder="Chi tiết (nếu có)">'}
+ else{h+='<div class="tw"><table data-tb="'+f.id+'"><thead><tr><th class="n">#</th>'+f.cols.map(function(c){var p=c.split('|')[0];return'<th>'+esc(p.replace('*',''))+(p.indexOf('*')>-1?' <span class="req">*</span>':'')+'</th>'}).join('')+'</tr></thead><tbody>';
+  for(var i=0;i<f.n;i++)h+=row(f,i);h+='</tbody></table></div>'+(f.fx?'':'<button type="button" class="add" data-add="'+f.id+'">+ Thêm hàng</button>')}
+ return h+'</div>'}
+var F={};
+S.forEach(function(s){s[4].forEach(function(f){F[f.id]=f;f.g=s[2]})});
+$('#app').html(S.map(function(s){return'<section class="s" id="s_'+s[0]+'" style="--c:var('+G[s[2]][1]+')"><h2>'+esc(s[0])+'. '+esc(s[1])+' <small data-sp="'+s[0]+'"></small><span class="tag">'+G[s[2]][0]+'</span></h2><div class="hint">'+esc(s[3])+'</div>'+s[4].map(field).join('')+'</section>'}).join(''));
+$('#tiles').html('<div class="tile on" data-g="all" style="--c:var(--ink)"></div>'+Object.keys(G).map(function(k){return'<div class="tile" data-g="'+k+'" style="--c:var('+G[k][1]+')"></div>'}).join(''));
+/* ===== Thu thập / khôi phục dữ liệu ===== */
+function collect(){var d={};
+ $('[data-k]').each(function(){d[$(this).data('k')]=$(this).val()});
+ $('#app .opts').each(function(){var $i=$(this).find('input'),n=$i.attr('name');
+  d[n]=$i.attr('type')=='radio'?($i.filter(':checked').val()||''):$i.filter(':checked').map(function(){return this.value}).get()});
+ $('[data-tb]').each(function(){d[$(this).data('tb')]=$(this).find('tbody tr').map(function(){return[$(this).find('input,select').map(function(){return $(this).val()}).get()]}).get()});
+ return d}
+function restore(d){
+ Object.keys(d).forEach(function(k){var v=d[k],f=F[k];
+  if(f&&f.t=='tb'&&Array.isArray(v)){if(f.fx){}else{var $b=$('[data-tb='+k+'] tbody').empty();v.forEach(function(r,i){$b.append(row(f,i,r))})}
+   if(f.fx)$('[data-tb='+k+'] tbody tr').each(function(i){$(this).find('input,select').each(function(j){$(this).val((v[i]||[])[j])})})}
+  else if(f&&(f.t=='r'||f.t=='c')){$('[name='+k+']').each(function(){this.checked=[].concat(v).indexOf(this.value)>-1})}
+  else $('[data-k='+k+']').val(v)})}
+/* ===== Tiến độ ===== */
+function done(f,d){var v=d[f.id];if(f.t=='tb')return(v||[]).some(function(r){return r.some(function(c,j){return(f.fx&&j==0?false:String(c||'').trim())})});
+ if(f.t=='c')return(v||[]).length>0;return String(v||'').trim()!==''}
+function update(){var d=collect(),tot={all:[0,0]},miss=[];
+ Object.keys(G).forEach(function(k){tot[k]=[0,0]});
+ S.forEach(function(s){var a=0,b=0;s[4].forEach(function(f){if(!f.q)return;b++;var ok=done(f,d);if(ok)a++;else miss.push(f);tot[f.g][1]++;tot.all[1]++;if(ok){tot[f.g][0]++;tot.all[0]++}});
+  $('[data-sp="'+s[0]+'"]').text(a+'/'+b)});
+ function pc(t){return t[1]?Math.round(t[0]/t[1]*100):0}
+ $('#pct').text(pc(tot.all)+'%');$('#cnt').text(tot.all[0]+'/'+tot.all[1]+' mục bắt buộc');
+ $('#ring').css('background','conic-gradient(var(--teal) '+pc(tot.all)*3.6+'deg,#dde5ea 0)');
+ $('.tile').each(function(){var k=$(this).data('g'),t=tot[k];$(this).html((k=='all'?'Toàn xã':G[k][0])+'<b>'+pc(t)+'%</b>'+t[0]+'/'+t[1]+' mục · còn '+(t[1]-t[0])+'<div class="bar"><i style="width:'+pc(t)+'%"></i></div>')});
+ var gf=$('.tile.on').data('g'),list=miss.filter(function(f){return gf=='all'||f.g==gf});
+ $('#missBox').html(list.length?'<span class="miss">Còn '+list.length+' mục bắt buộc chưa điền:</span><div class="chips">'+list.map(function(f){return'<span class="chip" data-go="'+f.id+'" title="'+esc(f.l)+'">'+esc(f.l.replace(/^[^.]*\.\s*/,function(m){return m}))+'</span>'}).join('')+'</div>':'<b style="color:var(--g2)">Đã điền đủ các mục bắt buộc.</b>');
+ $('#orgName').text(d.A1&&d.A1.trim()?d.A1:'Chưa nhập tên đơn vị');
+ return d}
+function save(){var d=update();try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+/* ===== Sự kiện ===== */
+$('#app').on('input change','input,select,textarea',save);
+$('#app').on('click','.add',function(){var f=F[$(this).data('add')],$b=$('[data-tb='+f.id+'] tbody');$b.append(row(f,$b.children().length));save()});
+$('#tiles').on('click','.tile',function(){$('.tile').removeClass('on');$(this).addClass('on');update()});
+$('#missBox').on('click','.chip',function(){var $t=$('#f_'+$(this).data('go'));$('html,body').animate({scrollTop:$t.offset().top-20},300);$t.find('input,select,textarea').first().focus()});
+$('#bSave').on('click',function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(collect(),null,1)],{type:'application/json'}));a.download='khao-sat-attt-'+new Date().toISOString().slice(0,10)+'.json';a.click()});
+$('#bOpen').on('click',function(){$('#fOpen').click()});
+$('#fOpen').on('change',function(){var r=new FileReader();r.onload=function(){try{restore(JSON.parse(r.result));save()}catch(e){alert('File dữ liệu không hợp lệ.')}};if(this.files[0])r.readAsText(this.files[0]);this.value=''});
+$('#bCopy').on('click',function(){var t=JSON.stringify(collect(),null,1);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){alert('Đã sao chép dữ liệu.')},function(){prompt('Sao chép (Ctrl+C):',t)})});
+$('#bPrint').on('click',function(){window.print()});
+$('#bClear').on('click',function(){if(confirm('Xóa toàn bộ dữ liệu đã nhập?')){try{localStorage.removeItem(KEY)}catch(e){}location.reload()}});
+try{var s=localStorage.getItem(KEY);if(s)restore(JSON.parse(s))}catch(e){}
+update();
+});
+</script>
+</body>
+</html>
